@@ -4,7 +4,6 @@
 abstract class Vehicle
 {
     const GENERIC = "generic";
-    const WHEELED = "wheeled";
 
     protected $size;
     protected $category;

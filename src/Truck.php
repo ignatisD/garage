@@ -3,6 +3,7 @@ require_once "WheeledVehicle.php";
 
 class Truck extends WheeledVehicle
 {
+    const TRUCK = "truck";
 
     function __construct($brand, $size = 25)
     {
