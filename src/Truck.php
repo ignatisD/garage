@@ -7,7 +7,7 @@ class Truck extends WheeledVehicle
 
     function __construct($brand, $size = 25)
     {
-        parent::__construct($brand, WheeledVehicle::TRUCK, $size);
+        parent::__construct($brand, Truck::TRUCK, $size);
         $this->plate = uniqid("T_");
     }
 
