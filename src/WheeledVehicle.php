@@ -1,5 +1,4 @@
 <?php
-require_once "Vehicle.php";
 
 abstract class WheeledVehicle extends Vehicle
 {

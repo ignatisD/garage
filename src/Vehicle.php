@@ -1,6 +1,5 @@
 <?php
 
-
 abstract class Vehicle
 {
     const CATEGORY = "vehicle";

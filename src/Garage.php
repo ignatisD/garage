@@ -1,5 +1,4 @@
 <?php
-require_once "Vehicle.php";
 
 class Garage
 {
@@ -30,7 +29,7 @@ class Garage
         $this->setCostPer(1);
     }
 
-    protected function now() {
+    public static function now() {
         return date("Y-m-d H:i:s");
     }
 
@@ -69,7 +68,7 @@ class Garage
         }
         $plate = $vehicle->getPlate();
         $this->parked[$plate] = $vehicle;
-        $this->parkedAt[$plate] = $this->now();
+        $this->parkedAt[$plate] = self::now();
         $vehicle->parked = true;
         $this->emptySpace -= $vehicle->getSize();
         return true;
@@ -99,7 +98,7 @@ class Garage
         }
         if (!$timeUnits) {
             $parkedAt = $this->parkedAt[$vehicle->getPlate()];
-            $now = $this->now();
+            $now = self::now();
             $timeUnits = ceil(abs(strtotime($now) - strtotime($parkedAt))); // seconds
         }
         return $this->getCostPer() * $timeUnits * $vehicle->getSize();

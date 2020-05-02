@@ -4,3 +4,4 @@
 
 !.gitkeep
 !.gitignore
+/vendor/

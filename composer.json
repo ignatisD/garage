@@ -1,0 +1,17 @@
+{
+    "name": "iggi/garage",
+    "authors": [
+        {
+            "name": "iggi",
+            "email": "ignatisnb@gmail.com"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^2.33"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

@@ -1,5 +1,4 @@
 <?php
-require_once "WheeledVehicle.php";
 
 class Truck extends WheeledVehicle
 {
