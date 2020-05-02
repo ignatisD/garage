@@ -15,7 +15,7 @@ class Garage
 
     /**
      * Garage constructor.
-     * @param number $size
+     * @param int $size
      * @param string[] $categories
      * @param string[] $types
      */
@@ -40,7 +40,6 @@ class Garage
         if ($vSize > $this->emptySpace) {
             return false;
         }
-
         return true;
     }
 
@@ -55,4 +54,17 @@ class Garage
         return true;
     }
 
+    /**
+     * @return int
+     */
+    public function getEmptySpace() {
+        return $this->emptySpace;
+    }
+
+    /**
+     * @return int
+     */
+    public function getParkedCount() {
+        return sizeof($this->parked);
+    }
 }

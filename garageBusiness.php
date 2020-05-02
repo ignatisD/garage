@@ -12,3 +12,6 @@ $myGarage->park($car);
 
 $truck = new Truck("Toyota");
 $myGarage->park($truck);
+
+$nowEmptySpace = $myGarage->getEmptySpace();
+$parkedCount = $myGarage->getParkedCount();
