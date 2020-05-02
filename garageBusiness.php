@@ -5,7 +5,7 @@ require_once "src/Garage.php";
 require_once "src/Car.php";
 require_once "src/Truck.php";
 
-$myGarage = new Garage(800, [WheeledVehicle::WHEELED], [Car::CAR, Truck::TRUCK]);
+$myGarage = new Garage(800, [WheeledVehicle::CATEGORY], [Car::TYPE, Truck::TYPE]);
 $myGarage->setCostPer(2);
 
 $truck = new Truck("Toyota");

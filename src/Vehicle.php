@@ -3,7 +3,8 @@
 
 abstract class Vehicle
 {
-    const GENERIC = "generic";
+    const CATEGORY = "vehicle";
+    const TYPE = "generic";
 
     protected $size;
     protected $category;
@@ -15,7 +16,7 @@ abstract class Vehicle
     {
         $this->type = $type;
         $this->size = $size;
-        $this->category = Vehicle::GENERIC;
+        $this->category = Vehicle::CATEGORY;
         $this->plate = uniqid("V_");
     }
 

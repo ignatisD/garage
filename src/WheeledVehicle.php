@@ -3,7 +3,7 @@ require_once "Vehicle.php";
 
 abstract class WheeledVehicle extends Vehicle
 {
-    const WHEELED = "wheeled";
+    const CATEGORY = "wheeled";
 
     protected $brand;
     protected $category;
@@ -11,7 +11,7 @@ abstract class WheeledVehicle extends Vehicle
     protected function __construct($brand, $type, $size = 25)
     {
         parent::__construct($type, $size);
-        $this->category = WheeledVehicle::WHEELED;
+        $this->category = WheeledVehicle::CATEGORY;
         $this->brand = $brand;
         $this->plate = uniqid("W_");
     }

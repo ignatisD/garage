@@ -3,11 +3,11 @@ require_once "WheeledVehicle.php";
 
 class Car extends WheeledVehicle
 {
-    const CAR = "car";
+    const TYPE = "car";
 
     function __construct($brand, $size = 15)
     {
-        parent::__construct($brand, CAR::CAR, $size);
+        parent::__construct($brand, CAR::TYPE, $size);
         $this->plate = uniqid("C_");
     }
 
