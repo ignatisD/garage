@@ -1,7 +1,10 @@
 <?php
 
+use Carbon\Carbon;
+
 class Garage
 {
+    const TIMEUNIT = "second";
     protected $size;
     protected $types;
     protected $categories;
@@ -29,8 +32,16 @@ class Garage
         $this->setCostPer(1);
     }
 
-    public static function now() {
-        return date("Y-m-d H:i:s");
+    public static function duration(Carbon $t1, Carbon $t2) {
+        switch (self::TIMEUNIT) {
+            case "day":
+                return $t1->diffInDays($t2, true);
+            case "hour":
+                return $t1->diffInRealHours($t2, true);
+            case "second":
+            default:
+                return $t1->diffInRealSeconds($t2, true);
+        }
     }
 
     public function log($line = "") {
@@ -68,7 +79,7 @@ class Garage
         }
         $plate = $vehicle->getPlate();
         $this->parked[$plate] = $vehicle;
-        $this->parkedAt[$plate] = self::now();
+        $this->parkedAt[$plate] = Carbon::now();
         $vehicle->parked = true;
         $this->emptySpace -= $vehicle->getSize();
         return true;
@@ -92,14 +103,31 @@ class Garage
         return $cost;
     }
 
+    /**
+     * @param Vehicle $vehicle
+     * @return int
+     * @throws ErrorException
+     */
+    public function parked(Vehicle $vehicle) {
+        $plate = $vehicle->getPlate();
+        if (!isset($this->parked[$plate])) {
+            throw new ErrorException("Vehicle not parked in the garage");
+        }
+        $parkedAt = $this->parkedAt[$plate];
+        $now = Carbon::now();
+        return self::duration($now, $parkedAt);
+    }
+
     public function cost(Vehicle $vehicle, $timeUnits = null) {
         if (!$timeUnits && !isset($this->parkedAt[$vehicle->getPlate()])) {
             return 0;
         }
         if (!$timeUnits) {
             $parkedAt = $this->parkedAt[$vehicle->getPlate()];
-            $now = self::now();
-            $timeUnits = ceil(abs(strtotime($now) - strtotime($parkedAt))); // seconds
+            $now = Carbon::now();
+            $timeUnits = self::duration($now, $parkedAt);
+            // Without Carbon
+            // $timeUnits =  ceil(abs(strtotime($now) - strtotime($parkedAt))); // seconds
         }
         return $this->getCostPer() * $timeUnits * $vehicle->getSize();
     }

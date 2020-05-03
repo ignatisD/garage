@@ -13,4 +13,5 @@ Steps:
 ```bash
 git clone [repository-url]
 composer install
+php garageBusiness.php
 ```

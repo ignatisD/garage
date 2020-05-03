@@ -5,7 +5,6 @@ abstract class WheeledVehicle extends Vehicle
     const CATEGORY = "wheeled";
 
     protected $brand;
-    protected $category;
 
     protected function __construct($brand, $type, $size = 25)
     {
